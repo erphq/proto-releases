@@ -134,7 +134,7 @@ Every tag (`vX.Y.Z`) ships:
 
 ## Support & issues
 
-Bug reports, feature requests, and discussion: [erpai.studio/contact](https://erpai.studio/contact).
+Bug reports, feature requests, and discussion: [www.erp.ai/contact](https://www.erp.ai/contact).
 
 <br />
 
