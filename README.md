@@ -27,7 +27,7 @@
 ![Windows](https://img.shields.io/badge/Windows-10%2F11%20x64-0078D4?logo=windows&logoColor=white)
 [![Latest release](https://img.shields.io/github/v/release/erphq/proto-releases?label=latest&color=blue)](https://github.com/erphq/proto-releases/releases/latest)
 
-[**What is Proto**](#what-is-proto) · [**Features**](#features) · [**Install**](#install) · [**Auto-updates**](#auto-updates) · [**Support**](#support--issues)
+[**What is Proto**](#what-is-proto) · [**Features**](#features) · [**What leaves your machine**](#what-leaves-your-machine) · [**Install**](#install) · [**Auto-updates**](#auto-updates) · [**Support**](#support--issues)
 
 </div>
 
@@ -39,16 +39,16 @@ This repository hosts signed + notarized builds of **Proto**. Proto is proprieta
 
 ## What is Proto
 
-Proto is the agent console for the people whose job the agent helps with — finance leads, ops managers, sales reps, HR generalists, support engineers. Open Proto, pick a skill or describe the work in plain language, and watch the agent do the busywork: pull invoices, draft customer outreach, reconcile records, investigate anomalies. You approve the moves that matter.
+Proto is the agent console for the people whose job the agent helps with: finance leads, ops managers, sales reps, HR generalists, support engineers. Open Proto, pick a skill or describe the work in plain language, and watch the agent do the busywork: pull invoices, draft customer outreach, reconcile records, investigate anomalies. You decide which moves wait for your approval.
 
-Local-first. The chat, your files, your API keys, your memory, and the audit trail of every action all live on your machine. The only thing that ever leaves the machine is the model call itself.
+Local-first. Your chats, files, API keys, memory and the record of every action are stored on your machine. Proto still sends data off it to do its work: the model requests, your ERP•AI apps, error reports and the tools you use. [What leaves your machine](#what-leaves-your-machine) lists them.
 
 <br />
 
 ## Features
 
 - 🗣️ **Plain-language chat.** Ask in your own words; Proto routes to the right skill and the right tool.
-- ✅ **Sign off, don't operate.** Anything that mutates external state — sending an email, updating an invoice, running a shell command — surfaces a one-sentence consequence and asks before it acts.
+- ✅ **You choose what waits for you.** In Ask mode, Proto says what an action will do and waits for your approval before it runs a command, edits a file, sends a message or changes a record. Uninterrupted mode, the default in the current release, runs actions without asking. Switch in **Settings → Permissions**.
 - 🧩 **Talks to your systems.** ERP, CRM, sheets, inboxes — connect over MCP and the agent can read and write directly.
 - 🛠️ **Installable skills.** Each skill is a markdown file that teaches the agent one job. Install from a curated registry, GitHub, or a local folder.
 - 💾 **Remembers what matters.** Cross-session memory lives in plain markdown — customer history, decisions, preferences — that you can open in any editor.
@@ -56,6 +56,20 @@ Local-first. The chat, your files, your API keys, your memory, and the audit tra
 - 🔄 **Model-agnostic.** Works on Claude, Gemini, GLM, Llama, Ollama, and more — pick whichever fits your cost / latency / quality budget.
 - 🎨 **Looks how you want.** 14 themes out of the box, custom fonts, light/dark auto-switch.
 - 🚀 **Updates itself.** New versions install with one click from Settings. Signed and verified before install.
+
+<br />
+
+## What leaves your machine
+
+Proto keeps your chats, files, keys, memory and action history on your computer. To do its work it sends data to these places:
+
+- **The AI model.** What you ask, and what the agent reads to answer (files, web pages, tool results), goes to the model. Requests pass through Proto's service (`api.proto.erpai.studio`) on the way to the model provider. A local model you run yourself (Ollama, LM Studio) is reached directly, and Codex mode uses your ChatGPT account.
+- **ERP•AI.** Your sign-in, and everything Proto reads or changes in your ERP•AI apps, goes to ERP•AI's servers. Cloud sessions, when you start one, run there too.
+- **Error reports.** When something fails, Proto sends ERP•AI a report automatically. In the current release that report includes the chat the failure happened in. **Help → Report a problem** shows what a report contains and lets you leave the chat out.
+- **Update checks.** Proto checks for new versions when it starts.
+- **The tools you use.** Web search, page fetches, the in-app browser, the plugins you connect and the messaging apps you link send what they need to those services.
+
+The [Proto Terms](https://www.erp.ai/proto-terms) and the [Privacy Policy](https://www.erp.ai/privacy) are the full account.
 
 <br />
 
@@ -105,7 +119,7 @@ xcrun stapler validate ~/Downloads/Proto_*_aarch64.dmg
 
 ## Auto-updates
 
-Proto checks this repository silently on launch. When a new version is published, a green dot appears on the Settings icon in the titlebar.
+Proto checks for new versions on launch. When a new version is published, a green dot appears on the Settings icon in the titlebar.
 
 To update, open **Settings → About → Download and install**. The app downloads, verifies the signature, installs, and relaunches itself.
 
@@ -138,9 +152,17 @@ Bug reports, feature requests, and discussion: [www.erp.ai/contact](https://www.
 
 <br />
 
+## Open-source software
+
+Proto includes open-source components, each under its own license. The app lists every one, with its license and notice files, in **Settings → About → Open-source notices** (the `THIRD_PARTY_NOTICES.txt` file in the app's `Resources/licenses` folder). Where Proto ships a modified open-source file, its source is published in [`third-party/`](third-party/):
+
+- [`@ubjs/node` 0.31.0-3](third-party/ubjs-node-0.31.0-3/) (Mozilla Public License 2.0)
+
+<br />
+
 ## License
 
-Proto is proprietary software. Copyright © 2026 ERP•AI. All rights reserved. See [LICENSE](LICENSE) for the full notice. The download is free during alpha; the binaries are licensed for use only and may not be redistributed, modified, or reverse-engineered.
+Proto is proprietary software. Copyright © 2026 ERP•AI. All rights reserved. See [LICENSE](LICENSE) for the full notice. The download is free during alpha; the binaries are licensed for use only and may not be redistributed, modified, or reverse-engineered. That does not apply to the open-source components above: each stays under its own license, and nothing in Proto's license limits the rights those licenses give you.
 
 ---
 

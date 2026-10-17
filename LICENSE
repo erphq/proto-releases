@@ -26,4 +26,11 @@ CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+Third-party components. The Software includes open-source components
+that are licensed under their own terms, which the Software lists in its
+open-source notices (Settings > About > Open-source notices). Those terms
+govern those components, and nothing in this notice limits the rights
+they grant. Source for open-source files that ERP•AI modified is
+published at https://github.com/erphq/proto-releases/tree/main/third-party.
+
 For licensing inquiries, contact ERP•AI.
