@@ -111,6 +111,8 @@ xcrun stapler validate ~/Downloads/Proto_*_aarch64.dmg
 2. Run the `.exe` installer
 3. Launch **Proto** from the Start Menu
 
+If a browser download fails, copy the Windows installer URL from a specific [release](https://github.com/erphq/proto-releases/releases) and run `curl.exe --location --fail --continue-at - --output Proto-x64-setup.exe "INSTALLER_URL"` in PowerShell, replacing `INSTALLER_URL` with that URL. Repeat the same command to resume, keeping the same release and output file. Before running the installer, compare `Get-FileHash .\Proto-x64-setup.exe -Algorithm SHA256` with the value after `sha256:` in that asset's `digest` in the [release metadata](https://api.github.com/repos/erphq/proto-releases/releases).
+
 > **SmartScreen warning:** Windows will show "Windows protected your PC" on first install because the app is currently unsigned. Click **More info → Run anyway** to proceed. We're working on adding a code-signing certificate.
 
 **First-run setup (both platforms):** open Settings → paste an [OpenRouter](https://openrouter.ai) or [Fireworks](https://fireworks.ai) API key → pick a skill or just start chatting.
